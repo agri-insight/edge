@@ -4,8 +4,8 @@ WORKDIR /opt/app
 
 ENV package=edge
 
-COPY target/universal/$package.zip .
+COPY target/universal/edge.zip .
 
-RUN unzip $package.zip && mv $package/* . && mv bin/$package bin/start && rm -r $package $package.zip
+RUN unzip $package.zip && mv $package/* . && mv bin/$package bin/start
 
 ENTRYPOINT ["bin/start"]

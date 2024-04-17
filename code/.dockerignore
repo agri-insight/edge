@@ -1,0 +1,12 @@
+# Exclude sbt build directories
+target/
+
+# Exclude generated IDE files
+.idea/
+*.iml
+.project
+.classpath
+
+# Exclude Docker-related files
+.dockerignore
+Dockerfile
