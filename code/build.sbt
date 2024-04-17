@@ -1,5 +1,3 @@
-val scala3Version = "3.3.0"
-
 lazy val root = project
   .in(file("."))
   .settings(
@@ -9,8 +7,11 @@ lazy val root = project
     scalaVersion := scala3Version,
     libraryDependencies ++=
       Dependencies.ScalaTest.All ++
-        Dependencies.Akka.All
+        Dependencies.Akka.All ++
+        Dependencies.Json.All ++
+        Dependencies.Config.All
   )
+val scala3Version = "3.3.0"
 
 val commonSettings = Seq(
   resolvers += "Akka library repository".at("https://repo.akka.io/maven")
