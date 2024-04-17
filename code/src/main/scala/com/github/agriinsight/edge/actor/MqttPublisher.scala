@@ -1,25 +1,31 @@
 package com.github.agriinsight.edge.actor
 
-import akka.actor.ActorSystem
-import akka.actor.typed.Behavior
 import akka.actor.typed.scaladsl.Behaviors
-import akka.stream.alpakka.csv.scaladsl.{CsvParsing, CsvToMap}
-import akka.stream.alpakka.mqtt.{MqttConnectionSettings, MqttMessage, MqttQoS}
+import akka.actor.typed.{ActorSystem, Behavior}
+import akka.stream.alpakka.csv.scaladsl.CsvParsing
+import akka.stream.alpakka.csv.scaladsl.CsvToMap
 import akka.stream.alpakka.mqtt.scaladsl.MqttSink
-import akka.stream.scaladsl.{FileIO, Source}
+import akka.stream.alpakka.mqtt.MqttConnectionSettings
+import akka.stream.alpakka.mqtt.MqttMessage
+import akka.stream.alpakka.mqtt.MqttQoS
+import akka.stream.scaladsl.FileIO
+import akka.stream.scaladsl.Source
 import akka.util.ByteString
 import com.github.agriinsight.edge.Parser
+
+import java.nio.file.Path
 import org.json4s.*
 import org.json4s.jackson.Serialization.write
 
-import java.nio.file.Path
-import scala.concurrent.ExecutionContext
 import scala.concurrent.duration.*
+import scala.concurrent.ExecutionContext
 
 object MqttPublisher:
 
-  def apply[T <: AnyRef: Parser](connectionSettings: MqttConnectionSettings)(topic: String, resource: String)(using
-      actorSystem: ActorSystem,
+  def apply(
+      connectionSettings: MqttConnectionSettings
+  )(transform: Parser)(topic: String, resource: String)(using
+      actorSystem: ActorSystem[Nothing],
       delay: FiniteDuration
   ): Behavior[MqttPublisher.Command] =
     Behaviors.receive { (context, message) =>
@@ -33,7 +39,7 @@ object MqttPublisher:
             .via(CsvToMap.toMapAsStrings())
             .delay(delay)
             .flatMapConcat(map =>
-              summon[Parser[T]].apply(map) match
+              transform(map) match
                 case Some(value) =>
                   val payload = ByteString.fromString(write(value)(DefaultFormats))
                   Source.single(

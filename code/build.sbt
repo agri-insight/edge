@@ -3,6 +3,7 @@ lazy val root = project
   .settings(
     commonSettings,
     name := "edge",
+    maintainer := "kivanval@gmail.com",
     version := "0.1.0-SNAPSHOT",
     scalaVersion := scala3Version,
     libraryDependencies ++=
@@ -10,7 +11,7 @@ lazy val root = project
         Dependencies.Akka.All ++
         Dependencies.Json.All ++
         Dependencies.Config.All
-  )
+  ).enablePlugins(UniversalPlugin, JavaAppPackaging)
 val scala3Version = "3.3.0"
 
 val commonSettings = Seq(
