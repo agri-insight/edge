@@ -14,6 +14,6 @@ object Starter {
     implicit val delay: FiniteDuration = mqttConfig.delay
 
     implicit val system: ActorSystem[Nothing] = ActorSystem[Nothing](Behaviors.empty, "edge", config)
-    MqttTemperaturePublisher(mqttConfig.connectionSettings)("temperature", "data/temperature.csv")
+    MqttTemperaturePublisher(mqttConfig.connectionSettings)("temperature")
   }
 }

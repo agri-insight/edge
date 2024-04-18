@@ -6,7 +6,7 @@ case class Temperature(timestamp: Long, objectType: Long, objectNumber: Long, va
 
 object Temperature {
 
-  private val randomProvider = new Random()
+  private val randomProvider = new Random
 
   def random: Temperature =
     Temperature(
