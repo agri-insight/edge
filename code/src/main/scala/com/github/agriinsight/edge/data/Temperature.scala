@@ -10,9 +10,9 @@ object Temperature {
 
   def random: Temperature =
     Temperature(
-      System.currentTimeMillis(),
-      randomProvider.nextLong(100),
-      randomProvider.nextLong(1000),
-      randomProvider.nextDouble() * 100
+      timestamp = System.currentTimeMillis(),
+      objectType = randomProvider.nextLong(100),
+      objectNumber = randomProvider.nextLong(1000),
+      value = randomProvider.nextDouble() * 100
     )
 }

@@ -10,3 +10,20 @@ services:
     ports:
       - "1883:1883"
       - "9001:9001"
+    networks:
+      mqtt_network:
+
+  agent:
+    build: ./code
+    depends_on:
+      - mqtt
+    environment:
+      MQTT_BROKER: tcp://mqtt:1883
+      MQTT_BROKER_PORT: 1883
+      MQTT_DELAY: 3000
+    networks:
+      mqtt_network:
+
+
+networks:
+  mqtt_network:
