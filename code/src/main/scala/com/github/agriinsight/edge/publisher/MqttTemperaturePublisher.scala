@@ -1,4 +1,4 @@
-package com.github.agriinsight.edge.actor
+package com.github.agriinsight.edge.publisher
 
 import akka.actor.typed.ActorSystem
 import akka.event.slf4j.SLF4JLogging
@@ -28,10 +28,10 @@ object MqttTemperaturePublisher extends SLF4JLogging {
       .repeat(Source.lazySingle(() => Temperature.random))
       .flatMapConcat(identity)
       .delay(delay)
-      .map { temperature =>
+      .map(temperature =>
         MqttMessage(topic, ByteString.fromString(write(temperature)(DefaultFormats)))
           .withQos(MqttQoS.AtLeastOnce)
           .withRetained(true)
-      }
+      )
   }.runWith(MqttSink(connectionSettings, MqttQoS.AtLeastOnce))
 }

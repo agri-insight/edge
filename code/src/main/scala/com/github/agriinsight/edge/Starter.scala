@@ -2,7 +2,7 @@ package com.github.agriinsight.edge
 
 import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.ActorSystem
-import com.github.agriinsight.edge.actor.MqttTemperaturePublisher
+import com.github.agriinsight.edge.publisher.MqttTemperaturePublisher
 import com.typesafe.config.ConfigFactory
 import scala.concurrent.duration.FiniteDuration
 
