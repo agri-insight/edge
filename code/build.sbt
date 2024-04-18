@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion := "3.3.0"
+ThisBuild / scalaVersion := "2.13.11"
 
 lazy val root = project
   .in(file("."))
@@ -11,8 +11,7 @@ lazy val root = project
     libraryDependencies ++=
       Dependencies.ScalaTest.All ++
         Dependencies.Akka.All ++
-        Dependencies.Json.All ++
-        Dependencies.Config.All
+        Dependencies.Json.All
   ).enablePlugins(UniversalPlugin, JavaAppPackaging)
 
 val commonSettings = Seq(

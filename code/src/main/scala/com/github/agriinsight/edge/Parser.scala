@@ -1,4 +1,5 @@
 package com.github.agriinsight.edge
 
-trait Parser:
+trait Parser {
   def apply(map: Map[String, String]): Option[String]
+}
