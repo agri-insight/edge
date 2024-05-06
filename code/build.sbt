@@ -11,8 +11,10 @@ lazy val root = project
     libraryDependencies ++=
       Dependencies.ScalaTest.All ++
         Dependencies.Akka.All ++
+        Dependencies.Logging.All ++
         Dependencies.Json.All
-  ).enablePlugins(UniversalPlugin, JavaAppPackaging)
+  )
+  .enablePlugins(UniversalPlugin, JavaAppPackaging)
 
 val commonSettings = Seq(
   resolvers += "Akka library repository".at("https://repo.akka.io/maven")

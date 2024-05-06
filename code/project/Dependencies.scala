@@ -11,14 +11,19 @@ object Dependencies {
 
   object Akka {
 
-    val AkkaVersion = "2.9.0"
-    val AlpakkaMqtt = "com.lightbend.akka" %% "akka-stream-alpakka-mqtt" % "7.0.2"
-    val AkkaTypedActor = "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion
-    val AkkaStream = "com.typesafe.akka" %% "akka-stream" % AkkaVersion
-    val AkkaSlf4j = "com.typesafe.akka" %% "akka-slf4j" % AkkaVersion
-    val Slf4j = "ch.qos.logback" % "logback-classic" % "1.5.6"
+    val Version = "2.9.0"
 
-    val All: Seq[ModuleID] = Seq(AlpakkaMqtt, AkkaStream, AkkaTypedActor, AkkaSlf4j, Slf4j)
+    val Mqtt = "com.lightbend.akka" %% "akka-stream-alpakka-mqtt" % "7.0.2"
+    val TypedActor = "com.typesafe.akka" %% "akka-actor-typed" % Version
+    val Stream = "com.typesafe.akka" %% "akka-stream" % Version
+    val Slf4j = "com.typesafe.akka" %% "akka-slf4j" % Version
+
+    val All: Seq[ModuleID] = Seq(Mqtt, Stream, TypedActor, Slf4j)
+  }
+
+  object Logging {
+    val Slf4j = "ch.qos.logback" % "logback-classic" % "1.5.6"
+    val All: Seq[ModuleID] = Seq(Slf4j)
   }
 
   object Json {
