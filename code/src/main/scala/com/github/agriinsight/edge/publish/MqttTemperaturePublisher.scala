@@ -1,4 +1,4 @@
-package com.github.agriinsight.edge.publisher
+package com.github.agriinsight.edge.publish
 
 import akka.actor.typed.ActorSystem
 import akka.event.slf4j.SLF4JLogging
