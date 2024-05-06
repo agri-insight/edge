@@ -4,9 +4,9 @@ object Dependencies {
 
   object ScalaTest {
 
-    val Scalastic = "org.scalactic" %% "scalactic" % "3.2.18"
+    val Scalactic = "org.scalactic" %% "scalactic" % "3.2.18"
     val ScalaTest = "org.scalatest" %% "scalatest" % "3.2.18" % Test
-    val All: Seq[ModuleID] = Seq(Scalastic, ScalaTest)
+    val All: Seq[ModuleID] = Seq(Scalactic, ScalaTest)
   }
 
   object Akka {
