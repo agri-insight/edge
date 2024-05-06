@@ -22,8 +22,8 @@ object Dependencies {
   }
 
   object Logging {
-    val Slf4j = "ch.qos.logback" % "logback-classic" % "1.5.6"
-    val All: Seq[ModuleID] = Seq(Slf4j)
+    val Logback = "ch.qos.logback" % "logback-classic" % "1.5.6"
+    val All: Seq[ModuleID] = Seq(Logback)
   }
 
   object Json {
