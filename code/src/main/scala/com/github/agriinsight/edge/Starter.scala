@@ -11,9 +11,14 @@ object Starter {
   def main(args: Array[String]): Unit = {
     val config = ConfigFactory.load()
     val mqttConfig = MqttConfig.fromConfig(config)
-    implicit val delay: FiniteDuration = mqttConfig.delay
 
     implicit val system: ActorSystem[Nothing] = ActorSystem[Nothing](Behaviors.empty, "edge", config)
-    MqttTemperaturePublisher(mqttConfig.connectionSettings)("temperature")
+
+    for {
+      value <- 1 to 1000
+    } {
+      MqttTemperaturePublisher(mqttConfig.connectionSettings)(s"soil/$value/temperature")
+      MqttTemperaturePublisher(mqttConfig.connectionSettings)(s"air/$value/temperature")
+    }
   }
 }
