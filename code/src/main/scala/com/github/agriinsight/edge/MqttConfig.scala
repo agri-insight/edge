@@ -1,7 +1,7 @@
 package com.github.agriinsight.edge
 
-import akka.stream.alpakka.mqtt.MqttConnectionSettings
 import com.typesafe.config.Config
+import org.apache.pekko.stream.connectors.mqtt.MqttConnectionSettings
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence
 
 case class MqttConfig(connectionSettings: MqttConnectionSettings)

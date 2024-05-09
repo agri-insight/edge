@@ -1,10 +1,9 @@
 package com.github.agriinsight.edge
 
-import akka.actor.typed.scaladsl.Behaviors
-import akka.actor.typed.ActorSystem
 import com.github.agriinsight.edge.publish.MqttTemperaturePublisher
 import com.typesafe.config.ConfigFactory
-import scala.concurrent.duration.FiniteDuration
+import org.apache.pekko.actor.typed.scaladsl.Behaviors
+import org.apache.pekko.actor.typed.ActorSystem
 
 object Starter {
 

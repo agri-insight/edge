@@ -9,14 +9,14 @@ object Dependencies {
     val All: Seq[ModuleID] = Seq(Scalactic, ScalaTest)
   }
 
-  object Akka {
+  object Pekko {
 
-    val Version = "2.9.0"
+    val Version = "1.0.2"
 
-    val Mqtt = "com.lightbend.akka" %% "akka-stream-alpakka-mqtt" % "7.0.2"
-    val TypedActor = "com.typesafe.akka" %% "akka-actor-typed" % Version
-    val Stream = "com.typesafe.akka" %% "akka-stream" % Version
-    val Slf4j = "com.typesafe.akka" %% "akka-slf4j" % Version
+    val Mqtt = "org.apache.pekko" %% "pekko-connectors-mqtt" % "1.0.2"
+    val TypedActor = "org.apache.pekko" %% "pekko-actor-typed" % Version
+    val Stream = "org.apache.pekko" %% "pekko-stream" % Version
+    val Slf4j = "org.apache.pekko" %% "pekko-slf4j" % Version
 
     val All: Seq[ModuleID] = Seq(Mqtt, Stream, TypedActor, Slf4j)
   }

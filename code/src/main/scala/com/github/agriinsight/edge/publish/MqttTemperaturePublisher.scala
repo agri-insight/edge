@@ -1,15 +1,15 @@
 package com.github.agriinsight.edge.publish
 
-import akka.actor.typed.ActorSystem
-import akka.event.slf4j.SLF4JLogging
-import akka.stream.alpakka.mqtt.scaladsl.MqttSink
-import akka.stream.alpakka.mqtt.MqttConnectionSettings
-import akka.stream.alpakka.mqtt.MqttMessage
-import akka.stream.alpakka.mqtt.MqttQoS
-import akka.stream.scaladsl.Source
-import akka.util.ByteString
-import akka.Done
 import com.github.agriinsight.edge.data.Temperature
+import org.apache.pekko.actor.typed.ActorSystem
+import org.apache.pekko.event.slf4j.SLF4JLogging
+import org.apache.pekko.stream.connectors.mqtt.scaladsl.MqttSink
+import org.apache.pekko.stream.connectors.mqtt.MqttConnectionSettings
+import org.apache.pekko.stream.connectors.mqtt.MqttMessage
+import org.apache.pekko.stream.connectors.mqtt.MqttQoS
+import org.apache.pekko.stream.scaladsl.Source
+import org.apache.pekko.util.ByteString
+import org.apache.pekko.Done
 import org.json4s._
 import org.json4s.jackson.Serialization.write
 import scala.concurrent.duration.DurationDouble
