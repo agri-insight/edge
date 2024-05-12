@@ -4,8 +4,8 @@ services:
   mqtt:
     image: eclipse-mosquitto
     volumes:
+      - mosquitto-data:/mosquitto/data
       - ./mosquitto:/mosquitto
-      - ./mosquitto/data:/mosquitto/data
       - ./mosquitto/log:/mosquitto/log
     ports:
       - "1883:1883"
@@ -24,6 +24,8 @@ services:
     networks:
       mqtt_network:
 
+volumes:
+  mosquitto-data:
 
 networks:
   mqtt_network:
