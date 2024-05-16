@@ -16,8 +16,8 @@ object Starter {
     for {
       value <- 1 to 1000
     } {
-      MqttTemperaturePublisher(mqttConfig.connectionSettings)(s"soil/$value/temperature")
-      MqttTemperaturePublisher(mqttConfig.connectionSettings)(s"air/$value/temperature")
+      MqttTemperaturePublisher(mqttConfig.connectionSettings)(s"sensors/$value/soil/temperature")
+      MqttTemperaturePublisher(mqttConfig.connectionSettings)(s"sensors/$value/air/temperature")
     }
   }
 }
