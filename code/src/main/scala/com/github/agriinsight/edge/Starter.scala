@@ -14,10 +14,14 @@ object Starter {
     implicit val system: ActorSystem[Nothing] = ActorSystem[Nothing](Behaviors.empty, "edge", config)
 
     for {
-      value <- 1 to 1000
+      value <- 1 to 100
     } {
       MqttTemperaturePublisher(mqttConfig.connectionSettings)(s"sensors/$value/soil/temperature")
       MqttTemperaturePublisher(mqttConfig.connectionSettings)(s"sensors/$value/air/temperature")
+      MqttTemperaturePublisher(mqttConfig.connectionSettings)(s"sensors/$value/soil/humidity")
+      MqttTemperaturePublisher(mqttConfig.connectionSettings)(s"sensors/$value/air/humidity")
+      MqttTemperaturePublisher(mqttConfig.connectionSettings)(s"sensors/$value/soil/humidity")
+      MqttTemperaturePublisher(mqttConfig.connectionSettings)(s"sensors/$value/crop/solar")
     }
   }
 }
